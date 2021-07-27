@@ -120,8 +120,8 @@
     <script>
       window.GithubRepoURL = ""
       window.GithubRepoURL = "{{ site.github.repository_url }}"
+      window.GithubBatch = "{{ site.github.source.branch }}"
     </script>
-    <script>{{ site.github }}</script>
     <!-- <script>
       var url = "{{ '/assets/page.js?v=' | append: site.github.build_revision | relative_url }}"
       if (/debugpage/.test(location.href)) {
