@@ -205,7 +205,8 @@
             return
         }
         var path = node.href.replace(embedReg, "")
-        var onlineHref = GithubRepoURL + "/blob/main/" + sourcePath.replace(embedReg, "")
+
+        var onlineHref = location.origin + location.pathname + sourcePath.replace(embedReg, "")
         var source = ""
         var text = fetch(path).then(function (res){
             if (res.status == 200) {
