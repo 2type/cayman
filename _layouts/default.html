@@ -42,7 +42,7 @@
             padding: 1em;
             float: left;
         }
-        .markdown-header ul {
+        .markdown-header>ul {
             padding-top: 2em;
             padding-bottom: 2em;
             background: #f3f6fa;
@@ -120,6 +120,7 @@
     <script>
       window.GithubRepoURL = ""
       window.GithubRepoURL = "{{ site.github.repository_url }}"
+      window.GithubBatch  = "main"
       window.GithubBatch = "{{ site.github.source.branch }}"
     </script>
     <!-- <script>
@@ -207,7 +208,7 @@
         }
         var path = node.href.replace(embedReg, "")
 
-        var onlineHref = GithubRepoURL + "/blob/main/" + sourcePath.replace(embedReg, "")
+        var onlineHref = GithubRepoURL + "/blob/" + GithubBatch + "/" + sourcePath.replace(embedReg, "")
         var source = ""
         var text = fetch(path).then(function (res){
             if (res.status == 200) {
