@@ -120,8 +120,8 @@
     <script>
       window.GithubRepoURL = ""
       window.GithubRepoURL = "{{ site.github.repository_url }}"
-      window.GithubBatch  = "main"
-      window.GithubBatch = "{{ site.github.source.branch }}"
+      window.GithubBranch  = "main"
+      window.GithubBranch = "{{ site.github.source.branch }}"
     </script>
     <!-- <script>
       var url = "{{ '/assets/page.js?v=' | append: site.github.build_revision | relative_url }}"
@@ -208,7 +208,7 @@
         }
         var path = node.href.replace(embedReg, "")
 
-        var onlineHref = GithubRepoURL + "/blob/" + GithubBatch + "/" + sourcePath.replace(embedReg, "")
+        var onlineHref = GithubRepoURL + "/blob/" + GithubBranch + "/" + sourcePath.replace(embedReg, "")
         var source = ""
         var text = fetch(path).then(function (res){
             if (res.status == 200) {
