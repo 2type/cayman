@@ -207,6 +207,10 @@
             return
         }
         var path = node.href.replace(embedReg, "")
+        // 解决 url是 "/sql" 的问题
+        if (/\/$/.test(location.pathname) == false) {
+            path = location.pathname + path.replace('./', "/")
+        }
 
         var onlineHref = GithubRepoURL + "/blob/" + GithubBranch + "/" + sourcePath.replace(embedReg, "")
         var source = ""
