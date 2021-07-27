@@ -121,6 +121,7 @@
       window.GithubRepoURL = ""
       window.GithubRepoURL = "{{ site.github.repository_url }}"
     </script>
+    <script>{{ site.github }}</script>
     <!-- <script>
       var url = "{{ '/assets/page.js?v=' | append: site.github.build_revision | relative_url }}"
       if (/debugpage/.test(location.href)) {
@@ -206,7 +207,7 @@
         }
         var path = node.href.replace(embedReg, "")
 
-        var onlineHref = location.origin + location.pathname + sourcePath.replace(embedReg, "")
+        var onlineHref = GithubRepoURL + "/blob/main/" + sourcePath.replace(embedReg, "")
         var source = ""
         var text = fetch(path).then(function (res){
             if (res.status == 200) {
