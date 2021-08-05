@@ -61,6 +61,13 @@
         module.exports = markrunSidebar
     }
 })()
+  document.querySelectorAll('a').forEach(function (node) {
+    var embedReg = /\?embed$/g
+    if (!embedReg.test(node.href)) {
+        return
+    }
+    node.setAttribute('_target', "blank")
+  })
 
 document.querySelectorAll('a').forEach(function (node) {
     var cloneLink = node.cloneNode(true)
@@ -72,7 +79,13 @@ document.querySelectorAll('a').forEach(function (node) {
         return
     }
     var path = node.href.replace(embedReg, "")
-    var onlineHref = GithubRepoURL + "/blob/main/" + sourcePath.replace(embedReg, "")
+    // 解决 url是 "/sql" 的问题
+    if (/\/$/.test(location.pathname) == false) {
+        path = location.pathname + path.replace('./', "/")
+    }
+
+    var onlineHref = GithubRepoURL + "/blob/" + GithubBranch + "/" + sourcePath.replace(embedReg, "")
+    node.href = onlineHref
     var source = ""
     var text = fetch(path).then(function (res){
         if (res.status == 200) {
@@ -107,6 +120,7 @@ document.querySelectorAll('a').forEach(function (node) {
         node.parentNode.replaceChild(box,node)
     })
 })
+
 document.getElementById("nav").className = "markdown-header"
 var markrunSideData = markrunSidebar({
     content: document.getElementById("content"),
