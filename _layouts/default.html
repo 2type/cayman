@@ -196,7 +196,14 @@
             module.exports = markrunSidebar
         }
     })()
-
+      document.querySelectorAll('a').forEach(function (node) {
+        var embedReg = /\?embed$/g
+        if (!embedReg.test(node.href)) {
+            return
+        }
+        node.setAttribute('_target', "blank")
+      })
+    /*
     document.querySelectorAll('a').forEach(function (node) {
         var cloneLink = node.cloneNode(true)
         var sourcePath = node.href.replace(embedReg, "").replace(location.origin + location.pathname, '')
@@ -247,6 +254,7 @@
             node.parentNode.replaceChild(box,node)
         })
     })
+    */
     document.getElementById("nav").className = "markdown-header"
     var markrunSideData = markrunSidebar({
         content: document.getElementById("content"),
