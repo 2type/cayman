@@ -1,3 +1,4 @@
+
 !(function () {
     function markrunSidebar(settings) {
         settings = settings || {}
@@ -104,6 +105,7 @@ document.querySelectorAll('a').forEach(function (node) {
         var box = document.createElement('div')
         box.style.position = "relative"
         var pre = document.createElement('pre')
+        pre.className = "embed-code"
         var code = document.createElement('code')
 
         code.innerHTML = html
@@ -111,12 +113,13 @@ document.querySelectorAll('a').forEach(function (node) {
         var sourceLink = document.createElement("a")
         sourceLink.innerText = node.innerText + ": " + sourcePath.replace(embedReg, "")
         sourceLink.href = onlineHref
+        sourceLink.target="_blank"
         box.appendChild(sourceLink)
         box.appendChild(pre)
-        var cloneSourceLink = sourceLink.cloneNode(true)
-        cloneSourceLink.style.position = "relative"
-        cloneSourceLink.style.top = "-1em"
-        box.appendChild(cloneSourceLink)
+        // var cloneSourceLink = sourceLink.cloneNode(true)
+        // cloneSourceLink.style.position = "relative"
+        // cloneSourceLink.style.top = "-1em"
+        // box.appendChild(cloneSourceLink)
         node.parentNode.replaceChild(box,node)
     })
 })

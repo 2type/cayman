@@ -18,6 +18,10 @@
     margin-left: 10em;
 }
 @media only screen and (max-width: 64em){
+    .embed-code {
+        display: none;
+    }
+
     .main-content{
         margin-left: 0;
     }
@@ -52,4 +56,9 @@
     color: #1e6bb8;
     display: block;
     cursor: pointer;
+}
+
+.main-content pre {
+    max-height: 20em;
+    overflow-y: auto;
 }
